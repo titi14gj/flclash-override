@@ -27,9 +27,9 @@ for (const [name, expected] of fixtures) {
  const regex = new RegExp(group.filter.replace('(?i)', ''), 'i');
  assert.deepEqual(names.filter(n => regex.test(n)), expected, 'provider filter: '+name);
 }
-assert.equal(result['proxy-groups'].length, 33);
+assert.equal(result['proxy-groups'].length, 30);
 assert.equal(result.rules.at(-1), 'MATCH,🚀 策略选择');
-assert(result.rules.some(r => r.endsWith(',📺 IPTV')));
+assert(result.rules.some(r => r.endsWith(',🍿 国外媒体')));
 assert(result.rules.some(r => r.endsWith(',AppleTV')));
 const valid = new Set([...result['proxy-groups'].map(g => g.name), 'DIRECT','REJECT',...names]);
 for (const g of result['proxy-groups']) for (const n of g.proxies || []) assert(valid.has(n), n);

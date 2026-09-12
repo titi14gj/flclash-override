@@ -1,6 +1,6 @@
 # FlClash Override
 
-由 Quantumult X 20260912234140 配置转换的 FlClash JavaScript 覆写。
+由 Quantumult X 20260912235850 配置转换的 FlClash JavaScript 覆写。
 
 ## 导入
 
@@ -16,12 +16,12 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 - 支持国旗、中文、英文地区名称及 HK01/JP01/SG01/KR01/US01 等格式。
 - 对 proxies 中的节点显式计算成员，对 proxy-providers 使用相同 filter，并明确指定 use。
 - 空地区不填充其他国家节点。没有动态提供器且筛选为空时设为 REJECT；动态提供器空组设置 empty-fallback: REJECT（需客户端核心支持）。
-- 新增 QX 的 AppleTV、Shawn 策略；Apple TV 规则使用 AppleTV 策略，不再强制美国。AppleTV 与 Shawn 初始选择 DIRECT，与 QX 静态组第一项一致。
-- IPTV 源没有 force-policy，也没有逐条策略，新增“📺 IPTV”组，默认“🍿 国外媒体”，可自行切换。
+- 保留 QX 的 AppleTV 策略，Apple TV 规则使用 AppleTV；AppleTV 初始选择 DIRECT，与 QX 静态组第一项一致。
+- IPTV 的 437 条规则按 QX 的 `force-policy` 进入“🍿 国外媒体”。
 
 ## 范围与限制
 
-33 个策略组，12,978 条最终规则。24 个远程规则源均下载成功，规则是转换时的静态快照，不会自动抓取上游更新。来源和跳过项见 SOURCES.md。
+30 个策略组，12,978 条最终规则。24 个远程规则源均下载成功，规则是转换时的静态快照，不会自动抓取上游更新。来源和跳过项见 SOURCES.md。
 
 保留订阅节点及 proxy-providers；替换策略组、规则并设为 rule 模式。规则顺序为排除网段 DIRECT、UDP443 REJECT、本地规则、远程规则、MATCH。排除网段分流并非操作系统路由排除。
 
@@ -35,7 +35,7 @@ DNS 主解析器迁移为 223.5.5.5 / 119.29.29.29 / 114.114.114.114，cloud-nod
 
 运行 `node test-override.cjs`。测试覆盖 11 个地区、跨地区反例、动态提供器筛选、空组、策略引用、AppleTV/IPTV 规则及节点保留。
 
-另在本机已有配置的 46 个节点名称上检查：香港 8、日本 5、新加坡 4、韩国 1、美国 5，归类符合名称。实际节点名称和凭据没有上传。
+另使用 FlClash for oixCloud 当前 `config.yaml` 中的 46 个节点名称执行覆写：香港 8、日本 5、新加坡 4、韩国 1、美国 5，归类符合名称。实际节点名称和凭据没有上传。
 
 尚未完成目标 FlClash 客户端的核心载入及网络连通性实测；JS 测试不代表节点一定可用。
 
