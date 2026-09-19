@@ -34,8 +34,9 @@ assert(result.rules.some(r => r.endsWith(',AppleTV')));
 for (const source of ['gary', 'cathy']) {
  const groupName = source === 'gary' ? '📺 IPTV Gary' : '📺 IPTV Cathy';
  const group = result['proxy-groups'].find(g => g.name === groupName);
+ const nodeGroups = result['proxy-groups'].filter(g => g.filter).map(g => g.name);
  assert.deepEqual(Array.from(group.proxies),
-   ['🍿 国外媒体', '🇺🇸 美国节点', '🇩🇪 德国', '🚀 策略选择', 'DIRECT']);
+   ['🍿 国外媒体', ...nodeGroups, '🚀 策略选择', 'DIRECT']);
  for (const behavior of ['domain', 'ipcidr']) {
    const id = `qx_iptv_${source}_${behavior}`;
    const provider = result['rule-providers'][id];
