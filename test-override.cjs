@@ -27,10 +27,28 @@ for (const [name, expected] of fixtures) {
  const regex = new RegExp(group.filter.replace('(?i)', ''), 'i');
  assert.deepEqual(names.filter(n => regex.test(n)), expected, 'provider filter: '+name);
 }
-assert.equal(result['proxy-groups'].length, 30);
+assert.equal(result['proxy-groups'].length, 32);
 assert.equal(result.rules.at(-1), 'MATCH,🚀 策略选择');
 assert(result.rules.some(r => r.endsWith(',🍿 国外媒体')));
 assert(result.rules.some(r => r.endsWith(',AppleTV')));
+for (const source of ['gary', 'cathy']) {
+ const groupName = source === 'gary' ? '📺 IPTV Gary' : '📺 IPTV Cathy';
+ const group = result['proxy-groups'].find(g => g.name === groupName);
+ assert.deepEqual(Array.from(group.proxies),
+   ['🍿 国外媒体', '🇺🇸 美国节点', '🇩🇪 德国', '🚀 策略选择', 'DIRECT']);
+ for (const behavior of ['domain', 'ipcidr']) {
+   const id = `qx_iptv_${source}_${behavior}`;
+   const provider = result['rule-providers'][id];
+   assert.equal(provider.type, 'http');
+   assert.equal(provider.format, 'mrs');
+   assert.equal(provider.behavior, behavior);
+   assert.equal(provider.interval, 43200);
+   assert(result.rules.includes(`RULE-SET,${id},${groupName}`));
+ }
+}
+assert(result.rules.indexOf('RULE-SET,qx_iptv_gary_domain,📺 IPTV Gary') <
+       result.rules.indexOf('RULE-SET,qx_iptv_cathy_domain,📺 IPTV Cathy'));
+assert(!result.rules.some(r => r.includes('0b73ace69ebb45eaa249bb87837cb958.mediatailor')));
 const valid = new Set([...result['proxy-groups'].map(g => g.name), 'DIRECT','REJECT',...names]);
 for (const g of result['proxy-groups']) for (const n of g.proxies || []) assert(valid.has(n), n);
 for (const rule of result.rules) {
@@ -43,6 +61,9 @@ const provider = {type:'http',url:'https://example.invalid/subscription'};
 const dynamic = context.main({'proxy-providers': {sample: provider}});
 assert.equal(dynamic['proxy-providers'].sample, provider);
 for(const g of dynamic['proxy-groups'].filter(g=>g.filter)) assert.deepEqual(Array.from(g.use), ['sample']);
+const existingRules = {custom: {type: 'inline', behavior: 'domain', payload: ['example.com']}};
+const merged = context.main({proxies: [{name:'US01',type:'ss'}], 'rule-providers': existingRules});
+assert.equal(merged['rule-providers'].custom, existingRules.custom);
 assert.throws(()=>context.main({}));
 assert.equal(input.proxies.length, names.length);
-console.log('PASS: 11 region groups; local/provider filters; cross-region negatives; empty groups; all policy references; IPTV and AppleTV; input node preservation.');
+console.log('PASS: 11 region groups; local/provider filters; cross-region negatives; empty groups; all policy references; Gary/Cathy IPTV providers and routing; input preservation.');

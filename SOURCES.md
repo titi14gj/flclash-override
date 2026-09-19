@@ -1,8 +1,10 @@
 # 上游来源与未迁移条目
 
-各源规则数为去重前计数。
+除 IPTV 外，各源规则数为去重前计数，属于上次 QX 转换的静态快照。Gary 与 Cathy 改为动态规则提供器：
 
-- [iptv](https://raw.githubusercontent.com/marcuccilli/gary/refs/heads/main/iptv_surge.list)：437 条。
+- [Gary 域名](https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_mihomo_domain.mrs)、[Gary IP](https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_mihomo_ipcidr.mrs)
+- [Cathy 域名](https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_mihomo_domain.mrs)、[Cathy IP](https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_mihomo_ipcidr.mrs)
+
 - [Apple TV](https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/QuantumultX/AppleTV/AppleTV.list)：7 条。
 - [AI](https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/AI.list)：66 条。
 - [F1 TV](https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list)：8 条。
