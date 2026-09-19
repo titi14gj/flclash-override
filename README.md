@@ -16,6 +16,7 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 - “📺 IPTV Cathy”使用 [Cathy](https://github.com/marcuccilli/cathy) 的域名、IP 两份 Mihomo MRS 规则。
 - 两组默认选择“🍿 国外媒体”，也可选“♻️ ALL”、所有地区节点组、“🚀 策略选择”或 DIRECT。两套规则每 12 小时通过 Mihomo 更新；首次载入需要能访问 GitHub Raw。
 - Gary 规则排在 Cathy 前面。同一域名或 IP 如果同时命中两套规则，将使用 Gary 分组。
+- 在 FlClash 的代理列表中，所有可手动选择的策略组（含 Gary、Cathy）排在测速及地区节点组之前。
 
 ## 地区筛选
 

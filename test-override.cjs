@@ -28,6 +28,12 @@ for (const [name, expected] of fixtures) {
  assert.deepEqual(names.filter(n => regex.test(n)), expected, 'provider filter: '+name);
 }
 assert.equal(result['proxy-groups'].length, 32);
+const firstNodeGroup = result['proxy-groups'].findIndex(g => g.filter);
+assert(firstNodeGroup > 0);
+assert(result['proxy-groups'].slice(0, firstNodeGroup).every(g => !g.filter));
+assert(result['proxy-groups'].slice(firstNodeGroup).every(g => g.filter));
+assert(result['proxy-groups'].findIndex(g => g.name === '📺 IPTV Gary') < firstNodeGroup);
+assert(result['proxy-groups'].findIndex(g => g.name === '📺 IPTV Cathy') < firstNodeGroup);
 assert.equal(result.rules.at(-1), 'MATCH,🚀 策略选择');
 assert(result.rules.some(r => r.endsWith(',🍿 国外媒体')));
 assert(result.rules.some(r => r.endsWith(',AppleTV')));
@@ -58,6 +64,8 @@ for (const rule of result.rules) {
 }
 const onlyUS = context.main({proxies: [{name:'US01',type:'ss'}]});
 assert.deepEqual(Array.from(onlyUS['proxy-groups'].find(g=>g.name==='🇯🇵 日本节点').proxies), ['REJECT']);
+assert(onlyUS['proxy-groups'].findIndex(g => g.name === '📺 IPTV Cathy') <
+       onlyUS['proxy-groups'].findIndex(g => g.name === '🇯🇵 日本节点'));
 const provider = {type:'http',url:'https://example.invalid/subscription'};
 const dynamic = context.main({'proxy-providers': {sample: provider}});
 assert.equal(dynamic['proxy-providers'].sample, provider);

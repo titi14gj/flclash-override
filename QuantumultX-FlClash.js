@@ -12994,7 +12994,10 @@ function main(config) {
       group.proxies = ["REJECT"];
     }
   });
-  config["proxy-groups"] = converted["proxy-groups"];
+  // Keep selectable policy groups ahead of auto-tested node groups in FlClash.
+  config["proxy-groups"] = converted["proxy-groups"]
+    .filter(group => !group.filter)
+    .concat(converted["proxy-groups"].filter(group => group.filter));
   config["rule-providers"] = Object.assign({}, config["rule-providers"] || {}, converted["rule-providers"]);
   config.rules = converted.rules;
   config.mode = "rule";
