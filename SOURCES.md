@@ -4,6 +4,8 @@
 
 - [Gary 域名](https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_mihomo_domain.mrs)、[Gary IP](https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_mihomo_ipcidr.mrs)
 - [Cathy 域名](https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_mihomo_domain.mrs)、[Cathy IP](https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_mihomo_ipcidr.mrs)
+- [Gary Anywhere 原文件](https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_anywhere.arrs)
+- [Cathy Anywhere 原文件](https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_anywhere.arrs)
 
 - [Apple TV](https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/QuantumultX/AppleTV/AppleTV.list)：7 条。
 - [AI](https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/AI.list)：66 条。
