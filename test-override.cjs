@@ -5,13 +5,6 @@ const path = require('path');
 const context = {};
 vm.createContext(context);
 vm.runInContext(fs.readFileSync(path.join(__dirname, 'QuantumultX-FlClash.js'), 'utf8'), context);
-for (const [file, expected] of [['gary-iptv.arrs', 350], ['cathy-iptv.arrs', 791]]) {
- const lines = fs.readFileSync(path.join(__dirname, 'anywhere', file), 'utf8').split(/\r?\n/);
- const rules = lines.filter(line => line && !line.startsWith('#') && !line.startsWith('name ='));
- assert.equal(rules.length, expected, file);
- assert.equal(new Set(rules).size, expected, `${file} duplicate rules`);
- assert(rules.every(line => /^(0|2),\s\S+$/.test(line)), `${file} syntax`);
-}
 const fixtures = [
  ['🇭🇰 香港节点', ['香港 01', 'HK01', 'Hong Kong 1', '🇭🇰 01', 'Just My Socks 香港']],
  ['🇯🇵 日本节点', ['日本 01', 'JP01', 'Tokyo 01', '🇯🇵 01', 'Just My Socks 日本']],

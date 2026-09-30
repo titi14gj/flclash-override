@@ -10,12 +10,10 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 
 应用前预览代理组及规则。各版本菜单可能略有不同；URL 导入后是否自动更新取决于客户端，更新时应重新导入。
 
-## Anywhere 规则
+## Anywhere 上游规则
 
-- Gary IPTV：https://raw.githubusercontent.com/titi14gj/flclash-override/main/anywhere/gary-iptv.arrs
-- Cathy IPTV：https://raw.githubusercontent.com/titi14gj/flclash-override/main/anywhere/cathy-iptv.arrs
-
-这两个文件是对应上游仓库在 2026-09-30 提供的 Anywhere `.arrs` 规则镜像：Gary 350 条，Cathy 791 条。它们是当前快照，不会跟随上游自动更新。
+- Gary IPTV：https://raw.githubusercontent.com/marcuccilli/gary/main/iptv_anywhere.arrs
+- Cathy IPTV：https://raw.githubusercontent.com/marcuccilli/Cathy/main/cathy_anywhere.arrs
 
 ## IPTV 分组
 
