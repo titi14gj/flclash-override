@@ -451,6 +451,8 @@ function main(config) {
     "RULE-SET,qx_iptv_gary_ipcidr,📺 IPTV Gary",
     "RULE-SET,qx_iptv_cathy_domain,📺 IPTV Cathy",
     "RULE-SET,qx_iptv_cathy_ipcidr,📺 IPTV Cathy",
+    "DOMAIN,cma.itunes.apple.com,AppleTV",
+    "DOMAIN,cma2.itunes.apple.com,AppleTV",
     "DOMAIN,hls-amt.itunes.apple.com,AppleTV",
     "DOMAIN,hls.itunes.apple.com,AppleTV",
     "DOMAIN,np-edge.itunes.apple.com,AppleTV",

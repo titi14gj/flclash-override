@@ -50,6 +50,11 @@ assert(result['proxy-groups'].findIndex(g => g.name === '📺 IPTV Cathy') < fir
 assert.equal(result.rules.at(-1), 'MATCH,🚀 策略选择');
 assert(result.rules.some(r => r.endsWith(',🍿 国外媒体')));
 assert(result.rules.some(r => r.endsWith(',AppleTV')));
+for (const host of ['cma.itunes.apple.com', 'cma2.itunes.apple.com']) {
+ const rule = `DOMAIN,${host},AppleTV`;
+ assert(result.rules.includes(rule));
+ assert(result.rules.indexOf(rule) < result.rules.indexOf('RULE-SET,qx_f1_tv,F1 TV'));
+}
 for (const source of ['gary', 'cathy']) {
  const groupName = source === 'gary' ? '📺 IPTV Gary' : '📺 IPTV Cathy';
  const group = result['proxy-groups'].find(g => g.name === groupName);

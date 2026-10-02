@@ -27,6 +27,7 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 
 - “F1 TV”策略组紧跟在 AppleTV 后面，选项与 AppleTV 完全一致：DIRECT、“🚀 策略选择”、REJECT 和“🇺🇸 美国节点”。
 - 使用 [Dler F1 TV](https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list) 动态规则提供器，每 48 小时更新。
+- Mac 上 Apple TV 应用播放直播时使用的 `cma.itunes.apple.com` 与 `cma2.itunes.apple.com` 也归入 AppleTV 分组，避免前者直连、后者经其他地区节点。
 
 ## 地区筛选
 
