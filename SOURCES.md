@@ -9,7 +9,7 @@
 
 - [Apple TV](https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/QuantumultX/AppleTV/AppleTV.list)：7 条。
 - [AI](https://raw.githubusercontent.com/fmz200/wool_scripts/main/Loon/rule/AI.list)：66 条。
-- [F1 TV](https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list)：8 条。
+- [F1 TV 动态规则](https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list)：每 48 小时更新。
 - [广告拦截合集@奶思](https://raw.githubusercontent.com/fmz200/wool_scripts/main/QuantumultX/filter/filter.list)：2760 条。
 - [Microsoft](https://yfamilys.com/rule/Microsoft.list)：670 条。
 - [Apple](https://yfamilys.com/rule/Apple.list)：33 条。

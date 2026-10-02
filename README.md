@@ -23,6 +23,11 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 - Gary 规则排在 Cathy 前面。同一域名或 IP 如果同时命中两套规则，将使用 Gary 分组。
 - 在 FlClash 的代理列表中，所有可手动选择的策略组（含 Gary、Cathy）排在测速及地区节点组之前。
 
+## F1 TV
+
+- “F1 TV”策略组紧跟在 AppleTV 后面，选项与 AppleTV 完全一致：DIRECT、“🚀 策略选择”、REJECT 和“🇺🇸 美国节点”。
+- 使用 [Dler F1 TV](https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list) 动态规则提供器，每 48 小时更新。
+
 ## 地区筛选
 
 - 地区缩写使用英文字母边界，避免 US 命中 Just/Business/Australia 等名称片段；去掉会误排除地区的宽泛排除表达式。
@@ -34,9 +39,9 @@ https://raw.githubusercontent.com/titi14gj/flclash-override/main/QuantumultX-FlC
 
 ## 范围与限制
 
-32 个策略组，12,545 条内嵌规则（含 4 条 IPTV RULE-SET）。原有其他 23 个远程规则源仍是转换时的静态快照；Gary/Cathy 的四份 MRS 规则独立自动更新。来源和跳过项见 SOURCES.md。
+33 个策略组，12,538 条内嵌规则（含 5 条 RULE-SET）。原有其他 22 个远程规则源仍是转换时的静态快照；Gary/Cathy 的四份 MRS 规则和 F1 TV 规则独立自动更新。来源和跳过项见 SOURCES.md。
 
-保留订阅节点、proxy-providers 和原有 rule-providers；替换策略组、规则，加入四份 IPTV rule-providers，并设为 rule 模式。规则顺序为排除网段 DIRECT、UDP443 REJECT、本地规则、Gary/Cathy IPTV、其他远程规则、MATCH。排除网段分流并非操作系统路由排除。
+保留订阅节点、proxy-providers 和原有 rule-providers；替换策略组、规则，加入四份 IPTV 和一份 F1 TV rule-provider，并设为 rule 模式。规则顺序为排除网段 DIRECT、UDP443 REJECT、本地规则、Gary/Cathy IPTV、其他远程规则、MATCH。排除网段分流并非操作系统路由排除。
 
 DNS 主解析器迁移为 223.5.5.5 / 119.29.29.29 / 114.114.114.114，cloud-nodes.com 定向解析也保留；其余订阅 DNS 字段保留，FlClash 的全局设置可能再次覆写它们。
 

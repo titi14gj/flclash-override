@@ -17,6 +17,16 @@ function main(config) {
       ]
     },
     {
+      "name": "F1 TV",
+      "type": "select",
+      "proxies": [
+        "DIRECT",
+        "🚀 策略选择",
+        "REJECT",
+        "🇺🇸 美国节点"
+      ]
+    },
+    {
       "name": "AdBlock",
       "type": "select",
       "proxies": [
@@ -514,14 +524,7 @@ function main(config) {
     "DOMAIN-SUFFIX,grok.com,🤖️ 人工智能",
     "DOMAIN,trae-api-sg.mchost.guru,🤖️ 人工智能",
     "DOMAIN-SUFFIX,trae.ai,🤖️ 人工智能",
-    "DOMAIN,d2n9h2wits23hf.cloudfront.net,🇺🇸 美国节点",
-    "DOMAIN,f1prodlive.akamaized.net,🇺🇸 美国节点",
-    "DOMAIN,mobile-collector.newrelic.com,🇺🇸 美国节点",
-    "DOMAIN-SUFFIX,bitmovin.com,🇺🇸 美国节点",
-    "DOMAIN-SUFFIX,f1esports.com,🇺🇸 美国节点",
-    "DOMAIN-SUFFIX,f1manager.com,🇺🇸 美国节点",
-    "DOMAIN-SUFFIX,f1play.com,🇺🇸 美国节点",
-    "DOMAIN-SUFFIX,formula1.com,🇺🇸 美国节点",
+    "RULE-SET,qx_f1_tv,F1 TV",
     "DOMAIN-SUFFIX,v3.fstats.xyz,REJECT",
     "DOMAIN-SUFFIX,wss.haoyundmn.com,REJECT",
     "DOMAIN-SUFFIX,new.xiongzhangad.com,REJECT",
@@ -12978,6 +12981,13 @@ function main(config) {
       "interval": 43200,
       "behavior": "ipcidr",
       "format": "mrs"
+    },
+    "qx_f1_tv": {
+      "type": "http",
+      "url": "https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list",
+      "interval": 172800,
+      "behavior": "classical",
+      "format": "text"
     }
   }
 };

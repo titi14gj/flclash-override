@@ -27,7 +27,20 @@ for (const [name, expected] of fixtures) {
  const regex = new RegExp(group.filter.replace('(?i)', ''), 'i');
  assert.deepEqual(names.filter(n => regex.test(n)), expected, 'provider filter: '+name);
 }
-assert.equal(result['proxy-groups'].length, 32);
+assert.equal(result['proxy-groups'].length, 33);
+const appleTV = result['proxy-groups'].find(g => g.name === 'AppleTV');
+const f1TV = result['proxy-groups'].find(g => g.name === 'F1 TV');
+assert.equal(result['proxy-groups'].indexOf(f1TV), result['proxy-groups'].indexOf(appleTV) + 1);
+assert.deepEqual(Array.from(f1TV.proxies), Array.from(appleTV.proxies));
+assert(result.rules.includes('RULE-SET,qx_f1_tv,F1 TV'));
+assert(!result.rules.some(rule => /d2n9h2wits23hf|f1prodlive|f1esports|f1manager|f1play|formula1/.test(rule)));
+assert.deepEqual(JSON.parse(JSON.stringify(result['rule-providers'].qx_f1_tv)), {
+ type: 'http',
+ url: 'https://raw.githubusercontent.com/dler-io/Rules/main/Surge/Surge%203/Provider/Media/F1%20TV.list',
+ interval: 172800,
+ behavior: 'classical',
+ format: 'text',
+});
 const firstNodeGroup = result['proxy-groups'].findIndex(g => g.filter);
 assert(firstNodeGroup > 0);
 assert(result['proxy-groups'].slice(0, firstNodeGroup).every(g => !g.filter));
@@ -75,4 +88,4 @@ const merged = context.main({proxies: [{name:'US01',type:'ss'}], 'rule-providers
 assert.equal(merged['rule-providers'].custom, existingRules.custom);
 assert.throws(()=>context.main({}));
 assert.equal(input.proxies.length, names.length);
-console.log('PASS: 11 region groups; local/provider filters; cross-region negatives; empty groups; all policy references; Gary/Cathy IPTV providers and routing; input preservation.');
+console.log('PASS: group order; F1 TV parity/provider; 11 region groups; Gary/Cathy IPTV routing; all references; input preservation.');
